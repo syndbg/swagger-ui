@@ -33,6 +33,7 @@ export default class ParameterRow extends Component {
     let { isOAS3 } = specSelectors
 
     let example = param.get("example")
+    let xExample = param.get("x-example")
     let defaultValue = param.get("default")
     let parameter = specSelectors.getParameter(pathMethod, param.get("name"), param.get("in"))
     let enumValue
@@ -51,6 +52,8 @@ export default class ParameterRow extends Component {
       value = paramValue
     } else if ( example !== undefined ) {
       value = example
+    } else if ( xExample !== undefined ) {
+      value = xExample
     } else if ( defaultValue !== undefined) {
       value = defaultValue
     } else if ( param.get("required") && enumValue && enumValue.size ) {
